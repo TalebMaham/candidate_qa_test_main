@@ -10,14 +10,12 @@ describe('Tests Cypress pour l\'API Todo', () => {
   });
 
   it('Devrait récupérer tous les Todos', () => {
-    // Chargez la fixture 'todos.json' pour simuler des données
- 
-      // Effectuez une requête GET vers l'API
+   
       cy.request('GET', apiRoute)
         .should((response) => {
           expect(response.status).to.equal(200);
           expect(response.body).to.be.an('array');
-          //expect(response.body).to.have.length(todos.length); // Vérifiez que le nombre d'éléments correspond à la fixture
+          //expect(response.body).to.have.length(todos.length); 
        
         });
   });
