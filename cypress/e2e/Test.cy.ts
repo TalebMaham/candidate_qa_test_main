@@ -94,9 +94,63 @@ describe('Tests Cypress pour l\'API Todo', () => {
         expect(response.body).to.be.an('array');
         expect(response.body).to.have.length(1); // Il devrait rester une seule tâche après la suppression
 
-        // Vérifie que la tâche restante est celle qui n'a pas été supprimée
+        // Vérifie que la tâche restante est celle qui a été mise à jour
         expect(response.body[0].title).to.equal('Tâche mise à jour');
         expect(response.body[0].completed).to.be.true;
+      });
+  });
+
+  it('Devrait supprimer la tâche mise à jour', () => {
+    cy.request('DELETE', `${apiRoute}/${firstTodoId}`)
+      .should((response) => {
+        expect(response.status).to.equal(200);
+      });
+  });
+
+  it('Devrait récupérer zéro Todos après suppression', () => {
+    cy.request('GET', apiRoute)
+      .should((response) => {
+        expect(response.status).to.equal(200);
+        expect(response.body).to.be.an('array');
+        expect(response.body).to.have.length(0); // La base de données est vide après la suppression
+      });
+  });
+
+
+  it('Devrait générer une erreur lors de la mise à jour sur une base de données vide', () => {
+    // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
+
+    // Tentative de mise à jour d'une ressource inexistante
+    const nonexistentId = 'nonexistent_id';
+    const updatedTodo = {
+      title: 'Tâche mise à jour',
+      completed: true,
+    };
+
+    cy.request({
+      method: 'PUT',
+      url: `${apiRoute}/${nonexistentId}`,
+      body: updatedTodo,
+      failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
+    })
+      .should((response) => {
+        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas mais on trouve 500 ce qui prouve que l'app ne gere pas cette exception 
+      });
+  });
+
+  it('Devrait générer une erreur lors de la suppression d\'une tâche inexistante dans une base de données vide', () => {
+    // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
+
+    // Tentative de suppression d'une ressource inexistante
+    const nonexistentId = 'nonexistent_id';
+
+    cy.request({
+      method: 'DELETE',
+      url: `${apiRoute}/${nonexistentId}`,
+      failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
+    })
+      .should((response) => {
+        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas
       });
   });
 });
