@@ -44,9 +44,9 @@
 - La réponse est un tableau vide (la base de données est vide après la suppression)
 
 ## Test 10: Devrait générer une erreur lors de la mise à jour sur une base de données vide (Échec)
-- La tentative de mise à jour d'une ressource inexistante renvoie un statut 404
+- La tentative de mise à jour d'une ressource inexistante renvoie un statut 500 (erreur serveur)
 - Recommandation : Assurez-vous de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de mettre à jour une ressource inexistante dans une base de données vide.
 
 ## Test 11: Devrait générer une erreur lors de la suppression d'une tâche inexistante dans une base de données vide (Échec)
-- La tentative de suppression d'une ressource inexistante renvoie un statut 404
+- La tentative de suppression d'une ressource inexistante renvoie un statut 500 (erreur serveur)
 - Recommandation : Assurez-vous de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de supprimer une ressource inexistante dans une base de données vide.
