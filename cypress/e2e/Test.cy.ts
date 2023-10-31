@@ -8,7 +8,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
   let secondTodoId; // Variable globale pour stocker l'ID de la deuxième tâche
 
   beforeEach(() => {
-   
+    // Aucune initialisation nécessaire pour les tests dans ce cas
   });
 
   it('Devrait récupérer zéro Todos (base de données vide)', () => {
@@ -135,7 +135,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
       failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
     })
       .should((response) => {
-        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas mais on trouve 500 ce qui prouve que l'app ne gere pas cette exception 
+        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas 
       });
   });
 
@@ -151,7 +151,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
       failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
     })
       .should((response) => {
-        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas mais on trouve 500 ce qui prouve que l'app ne gere pas cette exception 
+        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas 
       });
   });
 });
