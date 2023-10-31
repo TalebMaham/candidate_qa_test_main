@@ -117,7 +117,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
   });
 
 
-  it('Devrait générer une erreur lors de la mise à jour sur une base de données vide', () => {
+  it('Devrait générer une erreur 404 lors de la mise à jour sur une base de données vide', () => {
     // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
 
     // Tentative de mise à jour d'une ressource inexistante
@@ -138,7 +138,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
       });
   });
 
-  it('Devrait générer une erreur lors de la suppression d\'une tâche inexistante dans une base de données vide', () => {
+  it('Devrait générer une erreur 404 lors de la suppression d\'une tâche inexistante dans une base de données vide', () => {
     // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
 
     // Tentative de suppression d'une ressource inexistante
@@ -150,7 +150,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
       failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
     })
       .should((response) => {
-        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas
+        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas mais on trouve 500 ce qui prouve que l'app ne gere pas cette exception 
       });
   });
 });
