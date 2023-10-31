@@ -119,7 +119,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
 
 
   it('Devrait générer une erreur 404 lors de la mise à jour sur une base de données vide', () => {
-    // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
+    // Assurez-vous que la base de données est vide 
 
     // Tentative de mise à jour d'une ressource inexistante
     const nonexistentId = 'nonexistent_id';
@@ -140,7 +140,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
   });
 
   it('Devrait générer une erreur 404 lors de la suppression d\'une tâche inexistante dans une base de données vide', () => {
-    // Assurez-vous que la base de données est vide (vous n'avez pas besoin de supprimer les tâches existantes)
+    // Assurez-vous que la base de données est vide 
 
     // Tentative de suppression d'une ressource inexistante
     const nonexistentId = 'nonexistent_id';
