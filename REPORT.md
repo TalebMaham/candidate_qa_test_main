@@ -1,5 +1,7 @@
 # Rapport de Tests Cypress pour l'API Todo
 
+## Précondition : la base de données est initialement vide.
+
 ## Test 1: Devrait récupérer zéro Todos (base de données vide) <span style="color:green">(Réussi)</span>
 
 ### Attendu :
