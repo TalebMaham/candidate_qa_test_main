@@ -104,21 +104,21 @@
 - La requête de récupération vers /todos a renvoyé un statut 200.
 - La réponse était un tableau vide (la base de données était vide après la suppression).
 
-## Test 10: Devrait générer une erreur lors de la mise à jour sur une base de données vide <span style="color:red">(Échec)</span>
+## Test 10: Devrait générer une erreur 404 lors de la mise à jour sur une base de données vide <span style="color:red">(Échec)</span>
 
 ### Attendu :
-- La tentative de mise à jour d'une ressource inexistante doit renvoyer un statut 404 ( ressource inexistante).
+- La tentative de mise à jour d'une ressource inexistante doit renvoyer un statut 404 (Ressource inexistante).
 
 ### Résultat :
-- La tentative de mise à jour d'une ressource inexistante a renvoyé un statut 500, mais l'erreur serveur était incorrecte.
+- La tentative de mise à jour d'une ressource inexistante a renvoyé un statut 500 (Erreur serveur)..
 - **Recommandation** : Il est recommandé de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de mettre à jour une ressource inexistante dans une base de données vide.
 
-## Test 11: Devrait générer une erreur lors de la suppression d'une tâche inexistante dans une base de données vide <span style="color:red">(Échec)</span>
+## Test 11: Devrait générer une erreur 404 lors de la suppression d'une tâche inexistante dans une base de données vide <span style="color:red">(Échec)</span>
 
 ### Attendu :
-- La tentative de suppression d'une ressource inexistante doit renvoyer un statut 404 ( ressource inexistante).
+- La tentative de suppression d'une ressource inexistante doit renvoyer un statut 404 (Ressource inexistante).
 
 
 ### Résultat :
-- La tentative de suppression d'une ressource inexistante a renvoyé un statut 500, mais l'erreur serveur était incorrecte.
+- La tentative de suppression d'une ressource inexistante a renvoyé un statut 500 (Erreur serveur).
 - **Recommandation** : Il est recommandé de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de supprimer une ressource inexistante dans une base de données vide.
