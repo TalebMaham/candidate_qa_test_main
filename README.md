@@ -1,8 +1,10 @@
-# Rapport de Test et de Contrôle Qualité de Visions
+# Rapport de Test et de Contrôle Qualité 
+
+![Image de Test](image_test.png)
 
 ## Introduction
 
-Dans le cadre de ce projet, j'ai été chargé de réaliser des tests et de garantir la qualité de l'application Visions. Ce rapport vise à documenter les différentes étapes du processus de test, y compris l'installation et la configuration, la création de suites de tests, l'identification des domaines à améliorer et la documentation complète des tests effectués.
+Dans le cadre de ce projet, j'ai été chargé de réaliser des tests et de garantir la qualité de cette application.
 
 ## Principes de Tests ISTQB
 
@@ -20,7 +22,7 @@ Pour cela, j'ai élaboré 11 cas de tests, qui se divisent comme suit :
 
 2. Les 2 derniers cas représentent des situations critiques qui ne sont pas prises en compte par l'application et génèrent des erreurs indésirables pour le client final.
 
-J'ai fourni un rapport des tests réalisés qui respecte deux contraintes :
+J'ai fourni un rapport ([REPORT.md](REPORT.md)) des tests réalisés qui respecte deux contraintes :
 
 1. Suffisamment technique pour que les développeurs puissent rapidement localiser la source du problème. J'ai inclus les codes de réponse tels que 200, 201, 404, 500, etc.
 
@@ -28,6 +30,6 @@ J'ai fourni un rapport des tests réalisés qui respecte deux contraintes :
 
 Pour les deux derniers tests, j'ai fourni des recommandations pour résoudre les problèmes identifiés.
 
-Dans les prochaines heures, je fournirai un lien vers un autre référentiel où j'ai moi-même mis en œuvre les recommandations mentionnées dans le rapport de test pour démontrer que tous les tests ont réussi. De plus, je basculerai vers l'anglais pour les commentaires dans le code et dans le rapport après avoir effectué la vérification.
+Dans les prochaines heures, je fournirai un lien vers un autre référentiel où j'ai moi-même mis en œuvre les recommandations mentionnées dans le rapport de test pour démontrer que tous les tests vont réussir. De plus, je basculerai vers l'anglais pour les commentaires dans le code et dans le rapport après avoir effectué la vérification.
 
 Merci.
