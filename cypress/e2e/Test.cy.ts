@@ -8,7 +8,7 @@ describe('Tests Cypress pour l\'API Todo', () => {
   let secondTodoId; // Variable globale pour stocker l'ID de la deuxième tâche
 
   beforeEach(() => {
-    // Aucune initialisation nécessaire pour les tests dans ce cas
+   
   });
 
   it('Devrait récupérer zéro Todos (base de données vide)', () => {
