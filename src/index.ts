@@ -8,7 +8,7 @@ dotenv.config();
 const app: Application = express();
 const port: number = parseInt(process.env.PORT) || 3000;
 
-mongoose.connect("mongodb://localhost:27017/todosdb");
+mongoose.connect(process.env.MONGO_URI);
 
 app.use(express.json());
 
