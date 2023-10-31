@@ -32,7 +32,8 @@ Pour les deux derniers tests, j'ai fourni des recommandations pour résoudre les
 
 ## Améliorations possibles de l'application :
 
-1. Lors de la création de tâches (todos), les identifiants (ID) sont générés automatiquement, ce qui signifie que nous ne connaissons pas ces ID à l'avance. Cela limite notre capacité à effectuer certaines actions qui supposent de connaître préalablement les ID.
+1. Lors de la création de tâches (todos), les identifiants (ID) sont générés automatiquement, ce qui signifie que nous ne connaissons pas ces ID à l'avance. Cela limite notre capacité à effectuer certaines actions qui supposent de connaître préalablement les ID, donc à la creation 
+on peut donner l'ID en argument avec le titre .
 
 2. Comme le montrent et l'indiquent les tests ultérieurs, les exceptions ne sont pas prises en compte. Dans notre cas, de nombreux cas d'exception peuvent se produire, par exemple, toutes les exceptions que la base de données peut générer, ainsi que les exceptions liées à la synchronisation.
 
@@ -41,6 +42,6 @@ Pour les deux derniers tests, j'ai fourni des recommandations pour résoudre les
 4. L'ajout d'une fonction d'authentification peut également être intéressant, notamment si les titres des tâches peuvent contenir des informations privées, telles que des numéros de téléphone, des adresses e-mail, des salaires, ou des plans stratégiques de l'entreprise, etc.
 
 
-Dans les prochaines heures, je fournirai un lien vers un autre référentiel où j'ai moi-même mis en œuvre les recommandations mentionnées dans le rapport de test pour démontrer que tous les tests vont réussir. De plus, je basculerai vers l'anglais pour les commentaires dans le code et dans le rapport après avoir effectué la vérification.
+Dans les prochaines heures, je fournirai un lien vers un autre référentiel où j'ai moi-même mis en œuvre les recommandations mentionnées dans le rapport de test pour démontrer que tous les tests vont réussir. De plus, je basculerai vers l'anglais pour les commentaires dans le code et dans le rapport .
 
 Merci.
