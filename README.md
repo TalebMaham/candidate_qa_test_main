@@ -1,47 +1,44 @@
 # Candidate-Qa-Test
 
-![Image de Test](image_test.png)
+![Test Image](image_test.png)
 
 ## Introduction
 
-Dans le cadre de ce projet, j'ai été chargé de réaliser des tests et de garantir la qualité de cette application.
+In the context of this project, I was tasked with conducting tests and ensuring the quality of this application.
 
-## Principes de Tests ISTQB
+## ISTQB Testing Principles
 
-Lors de nos tests, nous nous appuyons sur les principes fondamentaux du test logiciel conformément aux directives de l'ISTQB (International Software Testing Qualifications Board) :
+During our testing, we adhere to the fundamental principles of software testing in accordance with the guidelines of ISTQB (International Software Testing Qualifications Board):
 
-1. **L'exhaustivité n'est pas possible**: Il est important de noter qu'il est impossible de tester chaque aspect de l'application. Étant donné que les ressources et le temps sont limités, il est essentiel de se concentrer sur les tests les plus pertinents en fonction de nos priorités.
+1. **Completeness is not possible**: It is important to note that testing every aspect of the application is impossible. Given limited resources and time, it is essential to focus on the most relevant tests based on our priorities.
 
-2. **Concentration sur les points critiques**: Dans notre cas, les tests doivent se concentrer sur les endpoints de l'application et mettre en évidence les points faibles les plus critiques de l'application.
+2. **Focus on critical points**: In our case, tests should concentrate on the application's endpoints and highlight the most critical weaknesses in the application.
 
-## Cas de Tests Réalisés : 
+## Test Cases Executed:
 
-Pour cela, j'ai élaboré 11 cas de tests, qui se divisent comme suit :
+For this purpose, I have developed 11 test cases, which are divided as follows:
 
-1. Les 9 premiers cas représentent des scénarios nominaux qui ne génèrent pas d'erreur. Cela reflète la plupart des cas d'utilisation lorsque les utilisateurs utilisent l'application.
+1. The first 9 cases represent nominal scenarios that do not generate errors. These reflect most use cases when users interact with the application.
 
-2. Les 2 derniers cas représentent des situations critiques qui ne sont pas prises en compte par l'application et génèrent des erreurs indésirables pour le client final.
+2. The last 2 cases represent critical situations that the application does not handle properly and generate undesirable errors for the end client.
 
-J'ai fourni un rapport ([REPORT.md](REPORT.md)) des tests réalisés qui respecte deux contraintes :
+I have provided a report ([REPORT.md](REPORT.md)) of the tests conducted, which adheres to two constraints:
 
-1. Suffisamment technique pour que les développeurs puissent rapidement localiser la source du problème. J'ai inclus les codes de réponse tels que 200, 201, 404, 500, etc.
+1. Technical enough for developers to quickly pinpoint the source of the problem. I have included response codes such as 200, 201, 404, 500, etc.
 
-2. Suffisamment simple pour que les non-techniciens puissent comprendre. J'ai utilisé des termes tels que récupération, création, mise à jour et suppression au lieu de GET, POST, PUT et DELETE. J'ai également indiqué si le test a réussi ou non, de manière à ce que les développeurs puissent facilement identifier la méthode concernée.
+2. Simple enough for non-technical individuals to understand. I have used terms like retrieval, creation, update, and deletion instead of GET, POST, PUT, and DELETE. I have also indicated whether the test passed or failed so that developers can easily identify the affected method.
 
-Pour les deux derniers tests, j'ai fourni des recommandations pour résoudre les problèmes identifiés.
+For the last two tests, I have provided recommendations for resolving the identified issues.
 
-## Améliorations possibles de l'application :
+## Possible Application Improvements:
 
-1. Lors de la création de tâches (todos), les identifiants (ID) sont générés automatiquement, ce qui signifie que nous ne connaissons pas ces ID à l'avance. Cela limite notre capacité à effectuer certaines actions qui supposent de connaître préalablement les ID, donc à la creation 
-on peut donner l'ID en argument avec le titre .
+1. When creating tasks (todos), IDs are automatically generated, which means we do not know these IDs in advance. This limits our ability to perform certain actions that assume prior knowledge of the IDs. Therefore, providing an option to specify the ID along with the title during creation could be beneficial.
 
-2. Comme le montrent et l'indiquent les tests ultérieurs, les exceptions ne sont pas prises en compte. Dans notre cas, de nombreux cas d'exception peuvent se produire, par exemple, toutes les exceptions que la base de données peut générer, ainsi que les exceptions liées à la synchronisation.
+2. As demonstrated by the subsequent tests, exceptions are not handled effectively. In our case, numerous exceptional cases can occur, including all exceptions that the database may generate, as well as exceptions related to synchronization.
 
-3. L'ajout d'une interface utilisateur avec des liens, des boutons, des formulaires, des listes, des cartes, etc., peut donner une autre perspective de l'application et ouvrir la porte à des tests qui mettent en évidence l'importance de Cypress.
+3. Adding a user interface with links, buttons, forms, lists, cards, etc., can provide a different perspective of the application and open the door to tests that highlight the importance of Cypress.
 
-4. L'ajout d'une fonction d'authentification peut également être intéressant, notamment si les titres des tâches peuvent contenir des informations privées, telles que des numéros de téléphone, des adresses e-mail, des salaires, ou des plans stratégiques de l'entreprise, etc.
+4. Adding an authentication feature can also be valuable, especially if task titles may contain private information such as phone numbers, email addresses, salaries, or company strategic plans, etc.
 
 
-Dans les prochaines heures, je fournirai un lien vers un autre référentiel où j'ai moi-même mis en œuvre les recommandations mentionnées dans le rapport de test pour démontrer que tous les tests vont réussir. De plus, je basculerai vers l'anglais pour les commentaires dans le code et dans le rapport .
-
-Merci.
+Thank you.
