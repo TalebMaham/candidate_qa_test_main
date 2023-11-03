@@ -1,126 +1,125 @@
-# Rapport de Tests Cypress pour l'API Todo
+# Cypress Test Report for Todo API
 
-## Précondition : la base de données est initialement vide.
+## Precondition: The database is initially empty.
 
-## Test 1: Devrait récupérer zéro Todos (base de données vide) <span style="color:green">(Réussi)</span>
+## Test 1: Should Retrieve Zero Todos (Empty Database) <span style="color:green">(Passed)</span>
 
-### Attendu :
-- Une requête de récupération vers /todos doit renvoyer un statut 200.
-- La réponse doit être un tableau vide.
+### Expected:
+- A retrieval request to /todos should return a status code 200.
+- The response should be an empty array.
 
-### Résultat :
-- La requête de récupération vers /todos a renvoyé un statut 200.
-- La réponse était un tableau vide.
+### Result:
+- The retrieval request to /todos returned a status code 200.
+- The response was an empty array.
 
-## Test 2: Devrait créer deux Todos <span style="color:green">(Réussi)</span>
+## Test 2: Should Create Two Todos <span style="color:green">(Passed)</span>
 
-### Attendu :
-- La création de la première tâche doit renvoyer un statut 201.
-- L'ID de la première tâche doit être stocké avec succès.
-- La création de la deuxième tâche doit renvoyer un statut 201.
-- L'ID de la deuxième tâche doit être stocké avec succès.
+### Expected:
+- Creating the first task should return a status code 201.
+- The ID of the first task should be successfully stored.
+- Creating the second task should return a status code 201.
+- The ID of the second task should be successfully stored.
 
-### Résultat :
-- La création de la première tâche a renvoyé un statut 201.
-- L'ID de la première tâche a été stocké avec succès.
-- La création de la deuxième tâche a renvoyé un statut 201.
-- L'ID de la deuxième tâche a été stocké avec succès.
+### Result:
+- Creating the first task returned a status code 201.
+- The ID of the first task was successfully stored.
+- Creating the second task returned a status code 201.
+- The ID of the second task was successfully stored.
 
-## Test 3: Devrait récupérer deux Todos après création <span style="color:green">(Réussi)</span>
+## Test 3: Should Retrieve Two Todos After Creation <span style="color:green">(Passed)</span>
 
-### Attendu :
-- Une requête de récupération vers /todos doit renvoyer un statut 200.
-- La réponse doit être un tableau contenant deux tâches.
-- Les tâches doivent être triées par date de création.
-- La première tâche doit avoir pour titre "Première tâche" et ne doit pas être complétée.
-- La deuxième tâche doit avoir pour titre "Deuxième tâche" et ne doit pas être complétée.
+### Expected:
+- A retrieval request to /todos should return a status code 200.
+- The response should be an array containing two tasks.
+- Tasks should be sorted by creation date.
+- The first task should have the title "First task" and should not be completed.
+- The second task should have the title "Second task" and should not be completed.
 
-### Résultat :
-- La requête de récupération vers /todos a renvoyé un statut 200.
-- La réponse était un tableau contenant deux tâches.
-- Les tâches étaient triées par date de création.
-- La première tâche avait pour titre "Première tâche" et n'était pas complétée.
-- La deuxième tâche avait pour titre "Deuxième tâche" et n'était pas complétée.
+### Result:
+- The retrieval request to /todos returned a status code 200.
+- The response was an array containing two tasks.
+- Tasks were sorted by creation date.
+- The first task had the title "First task" and was not completed.
+- The second task had the title "Second task" and was not completed.
 
-## Test 4: Devrait mettre à jour la première tâche <span style="color:green">(Réussi)</span>
+## Test 4: Should Update the First Task <span style="color:green">(Passed)</span>
 
-### Attendu :
-- La mise à jour de la première tâche doit renvoyer un statut 200.
-- La tâche mise à jour doit correspondre aux données attendues.
+### Expected:
+- Updating the first task should return a status code 200.
+- The updated task should match the expected data.
 
-### Résultat :
-- La mise à jour de la première tâche a renvoyé un statut 200.
-- La tâche mise à jour correspondait aux données attendues.
+### Result:
+- Updating the first task returned a status code 200.
+- The updated task matched the expected data.
 
-## Test 5: Devrait récupérer deux Todos après mise à jour <span style="color:green">(Réussi)</span>
+## Test 5: Should Retrieve Two Todos After Update <span style="color:green">(Passed)</span>
 
-### Attendu :
-- Une requête de récupération vers /todos doit renvoyer un statut 200.
-- La réponse doit être un tableau contenant deux tâches (nombre inchangé).
-- Les tâches doivent être triées par date de création.
-- La première tâche doit avoir été mise à jour avec succès et être complétée.
-- La deuxième tâche doit être inchangée et ne doit pas être complétée.
+### Expected:
+- A retrieval request to /todos should return a status code 200.
+- The response should be an array containing two tasks (unchanged count).
+- Tasks should be sorted by creation date.
+- The first task should have been successfully updated and marked as completed.
+- The second task should remain unchanged and not be completed.
 
-### Résultat :
-- La requête de récupération vers /todos a renvoyé un statut 200.
-- La réponse était un tableau contenant deux tâches (nombre inchangé).
-- Les tâches étaient triées par date de création.
-- La première tâche avait été mise à jour avec succès et était complétée.
-- La deuxième tâche était inchangée et n'était pas complétée.
+### Result:
+- The retrieval request to /todos returned a status code 200.
+- The response was an array containing two tasks (unchanged count).
+- Tasks were sorted by creation date.
+- The first task was successfully updated and marked as completed.
+- The second task remained unchanged and was not completed.
 
-## Test 6: Devrait supprimer la deuxième tâche <span style="color:green">(Réussi)</span>
+## Test 6: Should Delete the Second Task <span style="color:green">(Passed)</span>
 
-### Attendu :
-- La suppression de la deuxième tâche doit renvoyer un statut 200.
+### Expected:
+- Deleting the second task should return a status code 200.
 
-### Résultat :
-- La suppression de la deuxième tâche a renvoyé un statut 200.
+### Result:
+- Deleting the second task returned a status code 200.
 
-## Test 7: Devrait récupérer une tâche après suppression <span style="color:green">(Réussi)</span>
+## Test 7: Should Retrieve One Task After Deletion <span style="color:green">(Passed)</span>
 
-### Attendu :
-- Une requête de récupération vers /todos doit renvoyer un statut 200.
-- La réponse doit être un tableau contenant une seule tâche (une tâche a été supprimée).
-- La tâche restante doit être celle qui a été mise à jour et être complétée.
+### Expected:
+- A retrieval request to /todos should return a status code 200.
+- The response should be an array containing a single task (one task was deleted).
+- The remaining task should be the one that was updated and marked as completed.
 
-### Résultat :
-- La requête de récupération vers /todos a renvoyé un statut 200.
-- La réponse était un tableau contenant une seule tâche (une tâche a été supprimée).
-- La tâche restante était celle qui avait été mise à jour et était complétée.
+### Result:
+- The retrieval request to /todos returned a status code 200.
+- The response was an array containing a single task (one task was deleted).
+- The remaining task was the one that was updated and marked as completed.
 
-## Test 8: Devrait supprimer la tâche mise à jour <span style="color:green">(Réussi)</span>
+## Test 8: Should Delete the Updated Task <span style="color:green">(Passed)</span>
 
-### Attendu :
-- La suppression de la tâche mise à jour doit renvoyer un statut 200.
+### Expected:
+- Deleting the updated task should return a status code 200.
 
-### Résultat :
-- La suppression de la tâche mise à jour a renvoyé un statut 200.
+### Result:
+- Deleting the updated task returned a status code 200.
 
-## Test 9: Devrait récupérer zéro Todos après suppression <span style="color:green">(Réussi)</span>
+## Test 9: Should Retrieve Zero Todos After Deletion <span style="color:green">(Passed)</span>
 
-### Attendu :
-- Une requête de récupération vers /todos doit renvoyer un statut 200.
-- La réponse doit être un tableau vide (la base de données est vide après la suppression).
+### Expected:
+- A retrieval request to /todos should return a status code 200.
+- The response should be an empty array (the database is empty after deletion).
 
-### Résultat :
-- La requête de récupération vers /todos a renvoyé un statut 200.
-- La réponse était un tableau vide (la base de données était vide après la suppression).
+### Result:
+- The retrieval request to /todos returned a status code 200.
+- The response was an empty array (the database was empty after deletion).
 
-## Test 10: Devrait générer une erreur 404 lors de la mise à jour sur une base de données vide <span style="color:red">(Échec)</span>
+## Test 10: Should Generate a 404 Error When Updating on an Empty Database <span style="color:red">(Failed)</span>
 
-### Attendu :
-- La tentative de mise à jour d'une ressource inexistante doit renvoyer un statut 404 (Ressource inexistante).
+### Expected:
+- Attempting to update a non-existent resource should return a status code 404 (Resource not found).
 
-### Résultat :
-- La tentative de mise à jour d'une ressource inexistante a renvoyé un statut 500 (Erreur serveur)..
-- **Recommandation** : Il est recommandé de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de mettre à jour une ressource inexistante dans une base de données vide.
+### Result:
+- Attempting to update a non-existent resource returned a status code 500 (Server error).
+- **Recommendation**: It is recommended to handle exceptions in the controller to return a status code 404 when trying to update a non-existent resource in an empty database.
 
-## Test 11: Devrait générer une erreur 404 lors de la suppression d'une tâche inexistante dans une base de données vide <span style="color:red">(Échec)</span>
+## Test 11: Should Generate a 404 Error When Deleting a Non-Existent Task in an Empty Database <span style="color:red">(Failed)</span>
 
-### Attendu :
-- La tentative de suppression d'une ressource inexistante doit renvoyer un statut 404 (Ressource inexistante).
+### Expected:
+- Attempting to delete a non-existent resource should return a status code 404 (Resource not found).
 
-
-### Résultat :
-- La tentative de suppression d'une ressource inexistante a renvoyé un statut 500 (Erreur serveur).
-- **Recommandation** : Il est recommandé de gérer les exceptions dans le contrôleur pour renvoyer un statut 404 lorsque vous essayez de supprimer une ressource inexistante dans une base de données vide.
+### Result:
+- Attempting to delete a non-existent resource returned a status code 500 (Server error).
+- **Recommendation**: It is recommended to handle exceptions in the controller to return a status code 404 when trying to delete a non-existent resource in an empty database.
