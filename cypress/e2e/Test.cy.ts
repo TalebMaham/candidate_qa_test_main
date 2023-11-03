@@ -1,60 +1,59 @@
 /// <reference types="Cypress" />
 
-
 const apiRoute = 'http://localhost:3000/todos';
 
-describe('Tests Cypress pour l\'API Todo', () => {
-  let firstTodoId; // Variable globale pour stocker l'ID de la première tâche
-  let secondTodoId; // Variable globale pour stocker l'ID de la deuxième tâche
+describe('Cypress Tests for Todo API', () => {
+  let firstTodoId; // Global variable to store the ID of the first task
+  let secondTodoId; // Global variable to store the ID of the second task
 
   beforeEach(() => {
-    // Aucune initialisation nécessaire pour les tests dans ce cas
+    // No initialization needed for tests in this case
   });
 
-  it('Devrait récupérer zéro Todos (base de données vide)', () => {
+  it('Should Retrieve Zero Todos (empty database)', () => {
     cy.request('GET', apiRoute)
       .should((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.be.an('array');
-        expect(response.body).to.have.length(0); // La base de données est vide
+        expect(response.body).to.have.length(0); // The database is empty
       });
   });
 
-  it('Devrait créer deux Todos', () => {
-    // Crée la première tâche
-    cy.request('POST', apiRoute, { title: 'Première tâche' })
+  it('Should Create Two Todos', () => {
+    // Create the first task
+    cy.request('POST', apiRoute, { title: 'First task' })
       .should((response) => {
         expect(response.status).to.equal(201);
-        firstTodoId = response.body._id; // Stocke l'ID de la première tâche
+        firstTodoId = response.body._id; // Store the ID of the first task
       });
 
-    // Crée la deuxième tâche
-    cy.request('POST', apiRoute, { title: 'Deuxième tâche' })
+    // Create the second task
+    cy.request('POST', apiRoute, { title: 'Second task' })
       .should((response) => {
         expect(response.status).to.equal(201);
-        secondTodoId = response.body._id; // Stocke l'ID de la deuxième tâche
+        secondTodoId = response.body._id; // Store the ID of the second task
       });
   });
 
-  it('Devrait récupérer deux Todos après création', () => {
+  it('Should Retrieve Two Todos After Creation', () => {
     cy.request('GET', apiRoute)
       .should((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.be.an('array');
-        expect(response.body).to.have.length(2); // Il devrait y avoir deux tâches après la création
+        expect(response.body).to.have.length(2); // There should be two tasks after creation
 
-        // Vérifie l'ordre par date (du plus ancien au plus récent)
+        // Check the order by date (oldest to newest)
         const sortedTodos = response.body.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-        expect(sortedTodos[0].title).to.equal('Première tâche');
-        expect(sortedTodos[1].title).to.equal('Deuxième tâche');
+        expect(sortedTodos[0].title).to.equal('First task');
+        expect(sortedTodos[1].title).to.equal('Second task');
         expect(sortedTodos[0].completed).to.be.false;
         expect(sortedTodos[1].completed).to.be.false;
       });
   });
 
-  it('Devrait mettre à jour la première tâche', () => {
+  it('Should Update the First Task', () => {
     const updatedTodo = {
-      title: 'Tâche mise à jour',
+      title: 'Updated task',
       completed: true,
     };
 
@@ -65,66 +64,65 @@ describe('Tests Cypress pour l\'API Todo', () => {
       });
   });
 
-  it('Devrait récupérer deux Todos après mise à jour', () => {
+  it('Should Retrieve Two Todos After Update', () => {
     cy.request('GET', apiRoute)
       .should((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.be.an('array');
-        expect(response.body).to.have.length(2); // Le nombre de tâches reste inchangé après la mise à jour
+        expect(response.body).to.have.length(2); // The number of tasks remains unchanged after update
 
-        // Vérifie l'ordre par date (du plus ancien au plus récent)
+        // Check the order by date (oldest to newest)
         const sortedTodos = response.body.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-        expect(sortedTodos[0].title).to.equal('Tâche mise à jour');
-        expect(sortedTodos[1].title).to.equal('Deuxième tâche');
+        expect(sortedTodos[0].title).to.equal('Updated task');
+        expect(sortedTodos[1].title).to.equal('Second task');
         expect(sortedTodos[0].completed).to.be.true;
         expect(sortedTodos[1].completed).to.be.false;
       });
   });
 
-  it('Devrait supprimer la deuxième tâche', () => {
+  it('Should Delete the Second Task', () => {
     cy.request('DELETE', `${apiRoute}/${secondTodoId}`)
       .should((response) => {
         expect(response.status).to.equal(200);
       });
   });
 
-  it('Devrait récupérer une tâche après suppression', () => {
+  it('Should Retrieve One Task After Deletion', () => {
     cy.request('GET', apiRoute)
       .should((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.be.an('array');
-        expect(response.body).to.have.length(1); // Il devrait rester une seule tâche après la suppression
+        expect(response.body).to.have.length(1); // There should be one task remaining after deletion
 
-        // Vérifie que la tâche restante est celle qui a été mise à jour
-        expect(response.body[0].title).to.equal('Tâche mise à jour');
+        // Check that the remaining task is the one that was updated
+        expect(response.body[0].title).to.equal('Updated task');
         expect(response.body[0].completed).to.be.true;
       });
   });
 
-  it('Devrait supprimer la tâche mise à jour', () => {
+  it('Should Delete the Updated Task', () => {
     cy.request('DELETE', `${apiRoute}/${firstTodoId}`)
       .should((response) => {
         expect(response.status).to.equal(200);
       });
   });
 
-  it('Devrait récupérer zéro Todos après suppression', () => {
+  it('Should Retrieve Zero Todos After Deletion', () => {
     cy.request('GET', apiRoute)
       .should((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.be.an('array');
-        expect(response.body).to.have.length(0); // La base de données est vide après la suppression
+        expect(response.body).to.have.length(0); // The database is empty after deletion
       });
   });
 
+  it('Should Generate a 404 Error When Updating on an Empty Database', () => {
+    // Make sure the database is empty 
 
-  it('Devrait générer une erreur 404 lors de la mise à jour sur une base de données vide', () => {
-    // Assurez-vous que la base de données est vide 
-
-    // Tentative de mise à jour d'une ressource inexistante
+    // Attempt to update a non-existent resource
     const nonexistentId = 'nonexistent_id';
     const updatedTodo = {
-      title: 'Tâche mise à jour',
+      title: 'Updated task',
       completed: true,
     };
 
@@ -132,26 +130,26 @@ describe('Tests Cypress pour l\'API Todo', () => {
       method: 'PUT',
       url: `${apiRoute}/${nonexistentId}`,
       body: updatedTodo,
-      failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
+      failOnStatusCode: false, // Allows handling the error without failing the entire test
     })
       .should((response) => {
-        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas 
+        expect(response.status).to.equal(404); // We expect a 404 error because the resource doesn't exist 
       });
   });
 
-  it('Devrait générer une erreur 404 lors de la suppression d\'une tâche inexistante dans une base de données vide', () => {
-    // Assurez-vous que la base de données est vide 
+  it('Should Generate a 404 Error When Deleting a Non-Existent Task in an Empty Database', () => {
+    // Make sure the database is empty 
 
-    // Tentative de suppression d'une ressource inexistante
+    // Attempt to delete a non-existent resource
     const nonexistentId = 'nonexistent_id';
 
     cy.request({
       method: 'DELETE',
       url: `${apiRoute}/${nonexistentId}`,
-      failOnStatusCode: false, // Permet de gérer l'erreur sans échec total du test
+      failOnStatusCode: false, // Allows handling the error without failing the entire test
     })
       .should((response) => {
-        expect(response.status).to.equal(404); // On s'attend à une erreur 404 car la ressource n'existe pas 
+        expect(response.status).to.equal(404); // We expect a 404 error because the resource doesn't exist 
       });
   });
 });
