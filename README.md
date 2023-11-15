@@ -1,4 +1,4 @@
-# Candidate-Qa-Test
+# Qa-Test
 
 ![Test Image](image_test.png)
 
